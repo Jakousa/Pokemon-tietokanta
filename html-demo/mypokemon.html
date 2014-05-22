@@ -4,14 +4,15 @@
         <link href="../css/bootstrap.css" rel="stylesheet">
         <link href="../css/bootstrap-theme.css" rel="stylesheet">
         <link href="../css/main.css" rel="stylesheet">
-        <title></title>
+        <title>My Pokemon</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
     <body>
         <ul class="nav nav-tabs">
-            <li class="active"><a href="#">Pokémon</a></li>
-            <li><a href="#">Teams</a></li>
-            <li><a href="#">My Pokémon</a></li>
+            <li><a href="etusivu.html">Pokémon</a></li>
+            <li><a href="teampage.html">Teams</a></li>
+            <li class="active"><a href="">My Pokémon</a></li>
+            <li class="navbar-right"><a style="float:right" href="kirjautuminen.html">Kirjaudu</a></li>
         </ul>
         <div class="container">
             <h1>Pokémon-list</h1>
@@ -23,7 +24,7 @@
                         <th>Name</th>
                         <th>Type1</th>
                         <th>Type2</th>
-                        <th>To Team</th>
+                        <th>Remove from owned</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -32,35 +33,30 @@
                         <td>Bulbasaur</td>
                         <td>Grass</td>
                         <td>Poison</td>
-                        <td><button type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-ok"></span> Add to Team</button></td>
+                        <td><button type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-ok"></span> Remove</button></td>
+                        <td><button type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-info-sign"></span> </button></td>
+
                     </tr>
                     <tr>
                         <td>2</td>
                         <td>Ivysaur</td>
                         <td>Grass</td>
                         <td>Poison</td>
-                        <td><button type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-ok"></span> Add to Team</button></td>
+                        <td><button type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-ok"></span> Remove</button></td>
+                        <td><button type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-info-sign"></span> </button></td>
+
                     </tr>
                     <tr>
                         <td>3</td>
                         <td>Venusaur</td>
                         <td>Grass</td>
                         <td>Poison</td>
-                        <td><button type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-ok"></span> Add to Team</button></td>
+                        <td><button type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-ok"></span> Remove</button></td>
+                        <td><button type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-info-sign"></span> </button></td>
+
                     </tr>
                 </tbody>
             </table>
         </div>
-        <script>
-            var $rows = $('#pokemonit tr');
-            $('#search').keyup(function() {
-                var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
-    
-                $rows.show().filter(function() {
-                    var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
-                    return !~text.indexOf(val);
-                }).hide();
-            });
-        </script>
     </body>
 </html>
