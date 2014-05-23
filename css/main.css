@@ -10,3 +10,30 @@ root {
     display: block;
 }
 
+.scrollist {  
+    height: 500px;
+    margin-bottom: 40px; 
+    overflow: scroll;
+}
+
+.leftcontainer {
+    margin-bottom: 20px;
+    margin-left: 20px;
+    padding-right: 0%;
+    width: 60%;
+}
+
+.northeastcontainer {
+     margin-top: 20px;
+     margin-right: 20px;
+     width: 35%;
+     background-color: #520099
+}
+
+.southeastcontainer {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    width: 35%;
+    background-color: #330099;
+}
