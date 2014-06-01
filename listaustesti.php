@@ -14,6 +14,7 @@ $lista = Kayttaja::etsiKaikkiKayttajat();
         <ul>
             <?php foreach ($lista as $asia) { ?>
             <li><?php echo $asia->getTunnus(); ?></li>
+            <li><?php echo $asia->getSalasana(); ?></li>
             <?php } ?>
         </ul>
     </body>

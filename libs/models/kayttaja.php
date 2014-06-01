@@ -36,6 +36,27 @@ class Kayttaja {
         $this->salasana = $salasana;
     }
 
+    /* Etsitään kannasta käyttäjätunnuksella ja salasanalla käyttäjäriviä */
+
+    public static function etsiKayttajaTunnuksilla($kayttaja, $salasana) {
+        require_once "libs/tietokantayhteys.php";
+        $sql = "SELECT id, username, password from users where username = ? AND password = ? LIMIT 1";
+        $kysely = getTietokantayhteys()->prepare($sql);
+        $kysely->execute(array($kayttaja, $salasana));
+
+        $tulos = $kysely->fetchObject();
+        if ($tulos == null) {
+            return null;
+        } else {
+            $kayttaja = new Kayttaja();
+            $kayttaja->setId($tulos->id);
+            $kayttaja->setTunnus($tulos->username);
+            $kayttaja->setSalasana($tulos->password);
+
+            return $kayttaja;
+        }
+    }
+
     public static function etsiKaikkiKayttajat() {
         $sql = "SELECT id, username, password FROM users";
         $kysely = getTietokantayhteys()->prepare($sql);
@@ -46,7 +67,7 @@ class Kayttaja {
             $kayttaja = new Kayttaja();
             $kayttaja->setId($tulos->id);
             $kayttaja->setTunnus($tulos->username);
-            $kayttaja->setSalasana($tulos->salasana);
+            $kayttaja->setSalasana($tulos->password);
 
             //$array[] = $muuttuja; lisää muuttujan arrayn perään. 
             //Se vastaa melko suoraan ArrayList:in add-metodia.

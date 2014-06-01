@@ -1,9 +1,9 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-        <link href="../css/bootstrap.css" rel="stylesheet">
-        <link href="../css/bootstrap-theme.css" rel="stylesheet">
-        <link href="../css/main.css" rel="stylesheet">
+        <link href="css/bootstrap.css" rel="stylesheet">
+        <link href="css/bootstrap-theme.css" rel="stylesheet">
+        <link href="css/main.css" rel="stylesheet">
         <title>Pokemon-tietokanta</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
@@ -15,5 +15,10 @@
          */
         require 'views/' . $sivu . '.php';
         ?>
+
+        <?php if (!empty($data->virhe)): ?>
+            <div class="alert alert-danger"><?php echo $data->virhe; ?></div>
+        <?php endif; ?>
+            
     </body>
 </html>

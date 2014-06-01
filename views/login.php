@@ -1,10 +1,10 @@
 <div class="container">
     <h1>Login</h1>
-    <form class="form-horizontal" role="form" action="login.php" method="POST">
+    <form class="form-horizontal" role="form" action="doLogin.php" method="POST">
         <div class="form-group">
-            <label for="inputEmail" class="col-md-2 control-label">Username</label>
+            <label for="inputUsername" class="col-md-2 control-label">Username</label>
             <div class="col-md-10">
-                <input type="email" class="form-control" id="inputEmail1" name="tunnus" placeholder="Username">
+                <input type="username" class="form-control" id="inputEmail1" name="username" placeholder="Username" value="<?php echo $data->kayttaja; ?>">
             </div>
         </div>
         <div class="form-group">
