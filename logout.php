@@ -6,5 +6,5 @@
   unset($_SESSION['kirjautunut']);
 
   //Yleensä kannattaa ulkos kirjautumisen jälkeen ohjata käyttäjä kirjautumissivulle
-  header('Location: logintesti.php');
+  header('Location: index.php');
 ?>

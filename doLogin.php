@@ -27,7 +27,7 @@ if ($user != null) {
     
     //Tallennetaan istuntoon käyttäjäolio
     $_SESSION['kirjautunut'] = $user->getId();
-    header('Location: logintesti.php');
+    header('Location: index.php');
 } else {
     /* Väärän tunnuksen syöttänyt saa eteensä lomakkeen ja virheen.
      * Tässä käytetään omassa kirjastotiedostossa määriteltyjä yleiskäyttöisiä funktioita.
