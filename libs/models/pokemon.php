@@ -1,6 +1,6 @@
 <?php
 
-class pokemon {
+class Pokemon {
     
     private $id;	
     private $name;
@@ -51,5 +51,64 @@ class pokemon {
 
     public function getSpeed() {
         return $this->speed;
+    }
+    
+    public function setId($id) {
+        $this->id = $id;
+    }
+
+    public function setName($name) {
+        $this->name = $name;
+    }
+
+    public function setType1($type1) {
+        $this->type1 = $type1;
+    }
+
+    public function setType2($type2) {
+        $this->type2 = $type2;
+    }
+
+    public function setHp($hp) {
+        $this->hp = $hp;
+    }
+
+    public function setAttack($attack) {
+        $this->attack = $attack;
+    }
+
+    public function setDefense($defense) {
+        $this->defense = $defense;
+    }
+
+    public function setSpattack($spattack) {
+        $this->spattack = $spattack;
+    }
+
+    public function setSpdefense($spdefense) {
+        $this->spdefense = $spdefense;
+    }
+
+    public function setSpeed($speed) {
+        $this->speed = $speed;
+    }
+
+        
+    public static function etsiKaikkiPokemonit() {
+        $sql = "SELECT id, name, type1, type2 FROM pokemon ORDER BY id";
+        $kysely = getTietokantayhteys()->prepare($sql);
+        $kysely->execute();
+
+        $tulokset = array();
+        foreach ($kysely->fetchAll(PDO::FETCH_OBJ) as $tulos) {
+            $pokemon = new Pokemon();
+            $pokemon->setId($tulos->id);
+            $pokemon->setName($tulos->name);
+            $pokemon->setType1($tulos->type1);
+            $pokemon->setType2($tulos->type2);
+
+            $tulokset[] = $pokemon;
+        }
+        return $tulokset;
     }
 }
