@@ -25,6 +25,8 @@ class Kayttaja {
         return $this->salasana;
     }
 
+    
+    
     public function setId($id) {
         $this->id = $id;
     }
@@ -77,6 +79,24 @@ class Kayttaja {
             return $kayttaja;
         }
     }
+    
+    public static function etsiKayttajaTunnuksella($kayttaja) {
+        require_once "libs/tietokantayhteys.php";
+        $sql = "SELECT id, username from users where username = ? LIMIT 1";
+        $kysely = getTietokantayhteys()->prepare($sql);
+        $kysely->execute(array($kayttaja));
+
+        $tulos = $kysely->fetchObject();
+        if ($tulos == null) {
+            return null;
+        } else {
+            $kayttaja = new Kayttaja();
+            $kayttaja->setId($tulos->id);
+            $kayttaja->setTunnus($tulos->username);
+
+            return $kayttaja;
+        }
+    }
 
     public static function etsiKaikkiKayttajat() {
         $sql = "SELECT id, username, password FROM users";
@@ -102,7 +122,7 @@ class Kayttaja {
         $sql = "INSERT INTO users(username, password) VALUES(?,?) RETURNING id";
         $kysely = getTietokantayhteys()->prepare($sql);
 
-        $ok = $kysely->execute(array($this->getNimi(), $this->getVari(), $this->getRotuId()));
+        $ok = $kysely->execute(array($this->getTunnus(), $this->getSalasana()));
         if ($ok) {
             //Haetaan RETURNING-määreen palauttama id.
             //HUOM! Tämä toimii ainoastaan PostgreSQL-kannalla!
