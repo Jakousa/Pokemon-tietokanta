@@ -5,7 +5,9 @@
     <?php if (isLogged()) {
         ?> <li class="navbar-right"><a style="float:right" href="logout.php">Logout</a></li> <?php
     } else {
-        ?> <li class="navbar-right"><a style="float:right" href="login.php">Login</a></li> <?php
+        ?> 
+        <li class="navbar-right"><a style="float:right" href="signup.php">Register</a></li>
+        <li class="navbar-right"><a style="float:right" href="login.php">Login</a></li> <?php
     } ?>
     
 </ul>

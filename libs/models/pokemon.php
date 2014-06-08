@@ -1,8 +1,8 @@
 <?php
 
 class Pokemon {
-    
-    private $id;	
+
+    private $id;
     private $name;
     private $type1;
     private $type2;
@@ -12,7 +12,7 @@ class Pokemon {
     private $spattack;
     private $spdefense;
     private $speed;
-    
+
     public function getId() {
         return $this->id;
     }
@@ -52,7 +52,7 @@ class Pokemon {
     public function getSpeed() {
         return $this->speed;
     }
-    
+
     public function setId($id) {
         $this->id = $id;
     }
@@ -93,7 +93,6 @@ class Pokemon {
         $this->speed = $speed;
     }
 
-        
     public static function etsiKaikkiPokemonit() {
         $sql = "SELECT id, name, type1, type2 FROM pokemon ORDER BY id";
         $kysely = getTietokantayhteys()->prepare($sql);
@@ -111,4 +110,5 @@ class Pokemon {
         }
         return $tulokset;
     }
+
 }
