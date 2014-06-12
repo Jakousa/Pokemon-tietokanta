@@ -93,6 +93,24 @@ class Pokemon {
         $this->speed = $speed;
     }
 
+    public static function etsiPokemonNimesta($part) {
+        $sql = "SELECT id, name, type1, type2 FROM pokemon WHERE name LIKE ? ORDER BY id";
+        $kysely = getTietokantayhteys()->prepare($sql);
+        $kysely->execute(array('%'.$part.'%'));
+
+        $tulokset = array();
+        foreach ($kysely->fetchAll(PDO::FETCH_OBJ) as $tulos) {
+            $pokemon = new Pokemon();
+            $pokemon->setId($tulos->id);
+            $pokemon->setName($tulos->name);
+            $pokemon->setType1($tulos->type1);
+            $pokemon->setType2($tulos->type2);
+
+            $tulokset[] = $pokemon;
+        }
+        return $tulokset;
+    }
+
     public static function etsiKaikkiPokemonit() {
         $sql = "SELECT id, name, type1, type2 FROM pokemon ORDER BY id";
         $kysely = getTietokantayhteys()->prepare($sql);
