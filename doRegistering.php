@@ -7,6 +7,7 @@ if (empty($_POST["username"])) {
         'virhe' => "Registering failed, you didn't choose username.",
     ));
 }
+
 if (empty($_POST["password"])) {
     naytaNakyma("signup", array(
         'kayttaja' => $kayttaja,

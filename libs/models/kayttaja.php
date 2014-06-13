@@ -60,7 +60,6 @@ class Kayttaja {
     }
 
     /* Etsitään kannasta käyttäjätunnuksella ja salasanalla käyttäjäriviä */
-
     public static function etsiKayttajaTunnuksilla($kayttaja, $salasana) {
         require_once "libs/tietokantayhteys.php";
         $sql = "SELECT id, username, password from users where username = ? AND password = ? LIMIT 1";
@@ -80,6 +79,7 @@ class Kayttaja {
         }
     }
     
+    /* Etsitään kannasta pelkällä käyttäjätunnuksella käyttäjäriviä */
     public static function etsiKayttajaTunnuksella($kayttaja) {
         require_once "libs/tietokantayhteys.php";
         $sql = "SELECT id, username from users where username = ? LIMIT 1";
