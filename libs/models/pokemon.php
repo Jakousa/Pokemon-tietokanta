@@ -96,7 +96,7 @@ class Pokemon {
     public static function etsiPokemonNimesta($part) {
         $sql = "SELECT id, name, type1, type2 FROM pokemon WHERE name LIKE ? ORDER BY id";
         $kysely = getTietokantayhteys()->prepare($sql);
-        $kysely->execute(array('%'.$part.'%'));
+        $kysely->execute(array('%' . $part . '%'));
 
         $tulokset = array();
         foreach ($kysely->fetchAll(PDO::FETCH_OBJ) as $tulos) {
@@ -109,6 +109,26 @@ class Pokemon {
             $tulokset[] = $pokemon;
         }
         return $tulokset;
+    }
+
+    public static function etsiPokemonNimella($nimi) {
+        require_once "libs/tietokantayhteys.php";
+        $sql = "SELECT id, name, type1, type2 FROM pokemon WHERE name = ? LIMIT 1";
+        $kysely = getTietokantayhteys()->prepare($sql);
+        $kysely->execute(array($nimi));
+
+        $tulos = $kysely->fetchObject();
+        if ($tulos == null) {
+            return null;
+        } else {
+            $pokemon = new Pokemon();
+            $pokemon->setId($tulos->id);
+            $pokemon->setName($tulos->name);
+            $pokemon->setType1($tulos->type1);
+            $pokemon->setType2($tulos->type2);
+
+            return $pokemon;
+        }
     }
 
     public static function etsiKaikkiPokemonit() {

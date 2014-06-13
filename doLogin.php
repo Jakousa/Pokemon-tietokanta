@@ -35,6 +35,6 @@ if ($user != null) {
     naytaNakyma("login", array(
         /* Välitetään näkymälle tieto siitä, kuka yritti kirjautumista */
         'kayttaja' => $kayttaja,
-        'virhe' => "Kirjautuminen epäonnistui! Antamasi tunnus tai salasana on väärä.", request
+        'virhe' => "Login failed! Invalid username or password.", request
     ));
 }

@@ -47,13 +47,13 @@ class Team {
         $this->owner = $owner;
     }
 
-    public function lisaaKantaan($omistaja) {
+    public function lisaaKantaan() {
         require_once "libs/tietokantayhteys.php";
         $sql = "INSERT INTO team(name, ownerid) VALUES(?,?) RETURNING id";
         
         $kysely = getTietokantayhteys()->prepare($sql);
 
-        $ok = $kysely->execute(array($this->getName(), $omistaja));
+        $ok = $kysely->execute(array($this->getName(), $this->getOwner()));
         if ($ok) {
             //Haetaan RETURNING-määreen palauttama id.
             //HUOM! Tämä toimii ainoastaan PostgreSQL-kannalla!

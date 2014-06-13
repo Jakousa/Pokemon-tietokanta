@@ -25,11 +25,11 @@ $isprevious = Kayttaja::etsiKayttajaTunnuksella($newuser->getTunnus());
 if ($newuser->onkoKelvollinen() && is_null($isprevious)) {
     
   $newuser->lisaaKantaan();
-  //Kissa lisättiin kantaan onnistuneesti, lähetetään käyttäjä eteenpäin
+  //Käyttäjä lisättiin kantaan onnistuneesti, lähetetään käyttäjä eteenpäin
   header('Location: index.php');
-  //Asetetaan istuntoon ilmoitus siitä, että kissa on lisätty.
+  //Asetetaan istuntoon ilmoitus siitä, että käyttäjä on lisätty.
   //Tästä tekniikasta kerrotaan lisää kohta
-  $_SESSION['ilmoitus'] = "Kissa lisätty onnistuneesti.";
+  $_SESSION['ilmoitus'] = "User successfully created.";
 
 } else {
   $virheet = $newuser->getVirheet();

@@ -8,6 +8,21 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
     <body>
+        <?php if (!empty($_SESSION['ilmoitus'])): ?>
+            <div class="alert alert-success">
+                <?php echo $_SESSION['ilmoitus']; ?>
+            </div>
+            <?php
+            // Samalla kun viesti näytetään, se poistetaan istunnosta,
+            // ettei se näkyisi myöhemmin jollain toisella sivulla uudestaan.
+            unset($_SESSION['ilmoitus']);
+        endif;
+        ?>
+
+        <?php if (!empty($data->virhe)): ?>
+            <div class="alert alert-danger"><?php echo $data->virhe; ?></div>
+        <?php endif; ?>
+
         <?php
         /* HTML-rungon keskellä on sivun sisältö, 
          * joka haetaan sopivasta näkymätiedostosta.
@@ -16,9 +31,5 @@
         require 'views/' . $sivu . '.php';
         ?>
 
-        <?php if (!empty($data->virhe)): ?>
-            <div class="alert alert-danger"><?php echo $data->virhe; ?></div>
-        <?php endif; ?>
-            
     </body>
 </html>

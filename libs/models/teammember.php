@@ -26,11 +26,26 @@ class Teammember {
         $this->pokemonid = $pokemonid;
     }
 
+    public function lisaaKantaan() {
+        require_once "libs/tietokantayhteys.php";
+        $sql = "INSERT INTO teammember(teamid, pokemonid) VALUES(?,?)";
+
+        $kysely = getTietokantayhteys()->prepare($sql);
+
+        $ok = $kysely->execute(array($this->getTeamid(), $this->getPokemonid()));
+        if ($ok) {
+            //Haetaan RETURNING-määreen palauttama id.
+            //HUOM! Tämä toimii ainoastaan PostgreSQL-kannalla!
+            $this->id = $kysely->fetchColumn();
+        }
+        return $ok;
+    }
+
     public function etsiTiimi($team) {
         require_once "libs/tietokantayhteys.php";
         $sql = "SELECT * FROM teammember WHERE teamid = ?";
         $kysely = getTietokantayhteys()->prepare($sql);
-        $kysely->execute(array($tiimi->getId()));
+        $kysely->execute(array($team->getId()));
 
         $tulokset = array();
         foreach ($kysely->fetchAll(PDO::FETCH_OBJ) as $tulos) {
