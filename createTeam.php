@@ -22,6 +22,7 @@ if ($newteam->onkoKelvollinen()) {
 
   //Ennen kuin käyttäjä lähetetään eteenpäin lisätään myös pokemonit tiimin jäseniksi
   foreach ($_SESSION["tiimi"] as $jasen) {
+      //Ei tullut tallennettua muuta kuin nimi pokemonista joten haetaan id
       $apu = Pokemon::etsiPokemonNimella($jasen);
       $lisattava = new Teammember();
       $lisattava->setPokemonid($apu->getId());

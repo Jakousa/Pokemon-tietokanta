@@ -36,3 +36,15 @@ root {
     width: 35%;
     background-color: #330099;
 }
+
+#team_page_holder {
+    width: 100%;
+    height: 100%;
+}
+
+#team_containers {
+    height: 50%;
+    width: 25%;
+    background-color: #f2f2f2;
+    float: left;
+}

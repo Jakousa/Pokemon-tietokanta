@@ -4,13 +4,13 @@ class Team {
 
     private $id;
     private $name;
-    private $owner;
+    private $ownerid;
     private $virheet = array();
 
-    function __construct($id, $name, $owner) {
+    function __construct($id, $name, $ownerid) {
         $this->id = $id;
         $this->name = $name;
-        $this->owner = $owner;
+        $this->ownerid = $ownerid;
     }
 
     public function getId() {
@@ -21,8 +21,8 @@ class Team {
         return $this->name;
     }
 
-    public function getOwner() {
-        return $this->owner;
+    public function getOwnerid() {
+        return $this->ownerid;
     }
 
     public function setId($id) {
@@ -43,14 +43,33 @@ class Team {
         }
     }
 
-    public function setOwner($owner) {
-        $this->owner = $owner;
+    public function setOwnerid($ownerid) {
+        $this->ownerid = $ownerid;
+    }
+
+    public function etsiKaikkiTiimitOmistajalla($ownerid) {
+        require_once "libs/tietokantayhteys.php";
+
+        $sql = "SELECT id, name FROM team WHERE ownerid = ? ORDER BY id";
+        $kysely = getTietokantayhteys()->prepare($sql);
+        $kysely->execute(array($ownerid));
+
+        $tulokset = array();
+        foreach ($kysely->fetchAll(PDO::FETCH_OBJ) as $tulos) {
+            $tiimi = new Team();
+            $tiimi->setId($tulos->id);
+            $tiimi->setName($tulos->name);
+            $tiimi->setOwnerid($tulos->ownerid);
+
+            $tulokset[] = $tiimi;
+        }
+        return $tulokset;
     }
 
     public function lisaaKantaan() {
         require_once "libs/tietokantayhteys.php";
         $sql = "INSERT INTO team(name, ownerid) VALUES(?,?) RETURNING id";
-        
+
         $kysely = getTietokantayhteys()->prepare($sql);
 
         $ok = $kysely->execute(array($this->getName(), $this->getOwner()));
@@ -60,7 +79,6 @@ class Team {
             $this->id = $kysely->fetchColumn();
         }
         return $ok;
-        
     }
 
     public function onkoKelvollinen() {
