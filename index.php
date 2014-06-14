@@ -3,6 +3,7 @@
 require_once 'libs/common.php';
 require_once "libs/tietokantayhteys.php";
 require_once 'libs/models/pokemon.php';
+require_once 'libs/models/team.php';
 
 //Testataan jos jotakin ollaan haettu
 if (!isset($_GET['part']) or $_GET['part'] == '') {
@@ -29,6 +30,16 @@ if (isset($_GET['added'])) {
 if (isset($_GET['removed'])) {
     unset($_SESSION["tiimi"][$_GET['removed']]);
 }
+
+if (isset($_SESSION['kirjautunut'])) {
+    $teams = Team::etsiKaikkiTiimitOmistajalla($_SESSION['kirjautunut']);
+    
+    naytaNakyma("index", array(
+        'pokemonit' => $pokemonit,
+        'tiimit' => $teams
+    ));
+}
+
 
 naytaNakyma("index", array(
     'pokemonit' => $pokemonit

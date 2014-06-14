@@ -9,7 +9,7 @@
     </head>
     <body>
         <?php if (!empty($_SESSION['ilmoitus'])): ?>
-            <div class="alert alert-info">
+            <div class="alert alert-warning">
                 <?php echo $_SESSION['ilmoitus']; ?>
             </div>
             <?php
@@ -20,7 +20,7 @@
         ?>
 
         <?php if (!empty($data->virhe)): ?>
-            <div class="alert alert-danger"><?php echo $data->virhe; ?></div>
+            <div class="alert alert-warning"><?php echo $data->virhe; ?></div>
         <?php endif; ?>
 
         <?php

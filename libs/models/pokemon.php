@@ -94,6 +94,7 @@ class Pokemon {
     }
 
     public static function etsiPokemonNimesta($part) {
+        require_once "libs/tietokantayhteys.php";
         $sql = "SELECT id, name, type1, type2 FROM pokemon WHERE name LIKE ? ORDER BY id";
         $kysely = getTietokantayhteys()->prepare($sql);
         $kysely->execute(array('%' . $part . '%'));
@@ -132,6 +133,7 @@ class Pokemon {
     }
 
     public static function etsiKaikkiPokemonit() {
+        require_once "libs/tietokantayhteys.php";
         $sql = "SELECT id, name, type1, type2 FROM pokemon ORDER BY id";
         $kysely = getTietokantayhteys()->prepare($sql);
         $kysely->execute();

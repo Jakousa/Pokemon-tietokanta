@@ -81,6 +81,13 @@ class Team {
         return $ok;
     }
 
+    public function poistaOlemasta($teamid) {
+        require_once "libs/tietokantayhteys.php";
+        $sql = "DELETE FROM team WHERE id = ?";
+        $kysely = getTietokantayhteys()->prepare($sql);
+        $kysely->execute(array($teamid));
+    }
+
     public function onkoKelvollinen() {
         return empty($this->virheet);
     }

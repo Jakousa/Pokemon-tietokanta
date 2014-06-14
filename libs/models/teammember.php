@@ -41,6 +41,13 @@ class Teammember {
         return $ok;
     }
 
+    public function poistaTiimiOlemasta($teamid) {
+        require_once "libs/tietokantayhteys.php";
+        $sql = "DELETE FROM teammember WHERE teamid = ?";
+        $kysely = getTietokantayhteys()->prepare($sql);
+        $kysely->execute(array($teamid));
+    }
+
     public function etsiTiimi($team) {
         require_once "libs/tietokantayhteys.php";
         $sql = "SELECT * FROM teammember WHERE teamid = ?";
