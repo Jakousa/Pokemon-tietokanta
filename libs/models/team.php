@@ -72,7 +72,7 @@ class Team {
 
         $kysely = getTietokantayhteys()->prepare($sql);
 
-        $ok = $kysely->execute(array($this->getName(), $this->getOwner()));
+        $ok = $kysely->execute(array($this->getName(), $this->getOwnerid()));
         if ($ok) {
             //Haetaan RETURNING-määreen palauttama id.
             //HUOM! Tämä toimii ainoastaan PostgreSQL-kannalla!

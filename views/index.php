@@ -24,16 +24,18 @@ require 'views/navbar.php';
                 </span>
             </div>
         </form>
-    
-    To delete a team update it with no pokemon.
-        <form class="form-horizontal" role="form" action="updateTeam.php" method="POST">
-            <select name="teamid">
-                <?php foreach ($data->tiimit as $team ) : ?>
-                <option value="<?php echo $team->getId() ?>"><?php echo $team->getName() ?></option>
-                <?php endforeach; ?>
-            </select> 
-            <button class="btn btn-default btn-xs" type="submit">Update!</button>
-        </form>
+        <?php if (sizeof($data->tiimit) > 0) : ?>
+
+            To delete a team update it with no pokemon.
+            <form class="form-horizontal" role="form" action="updateTeam.php" method="POST">
+                <select name="teamid">
+                    <?php foreach ($data->tiimit as $team) : ?>
+                        <option value="<?php echo $team->getId() ?>"><?php echo $team->getName() ?></option>
+                    <?php endforeach; ?>
+                </select> 
+                <button class="btn btn-default btn-xs" type="submit">Update!</button>
+            </form>
+        <?php endif; ?>
     <?php endif; ?>
 </div>
 

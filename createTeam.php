@@ -5,18 +5,20 @@ require 'libs/models/team.php';
 require 'libs/models/teammember.php';
 require 'libs/models/pokemon.php';
 
-if (empty($_POST['team'])) {
-    $_SESSION['ilmoitus'] = "Name your team to save it";
-    header('Location: index.php');
-} else if (empty($_SESSION["tiimi"])) {
-
+if (empty($_SESSION['tiimi'])) {
     $_SESSION['ilmoitus'] = "Your team has to have atleast 1 Pokemon";
+    header('Location: index.php');
+} else if (empty($_POST["team"])) {
+    
+    $_SESSION['ilmoitus'] = "Name your team to save it";
     header('Location: index.php');
 } else {
 
+    $kirjautunutKayttaja = $_SESSION['kirjautunut'];
+    
     $newteam = new Team();
     $newteam->setName($_POST['team']);
-    $newteam->setOwner($_SESSION['kirjautunut']);
+    $newteam->setOwnerid($kirjautunutKayttaja);
 
     if ($newteam->onkoKelvollinen()) {
 
@@ -41,8 +43,8 @@ if (empty($_POST['team'])) {
 
         //Virheet voidaan nyt välittää näkymälle syötettyjen tietojen kera
         naytaNakyma("index", array(
-            'pokemonit' => $pokemonit,
-            'virhe' => $virhe
+            'virhe' => $virheet
         ));
     }
 }
+header('Location: index.php');
