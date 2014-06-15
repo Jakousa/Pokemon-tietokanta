@@ -24,7 +24,7 @@ Sijoittelu väliaikainen, sinä tarkastaja/katselmoija
     <div id="team_containers" class ="list-group"> 
         <!-- Lista vihollisen pokemoneista-->
         <?php if(!isset($_SESSION['tiimi']) or empty($_SESSION['tiimi'])) : ?>
-            Ei vihollista voitettavaksi
+        No enemy selected, do it in the <a href="index.php">front page.</a>
         <?php else : ?>
             <table id="tiimi" class="table table-striped">
                 <thead>

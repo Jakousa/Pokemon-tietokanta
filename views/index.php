@@ -4,7 +4,7 @@ require 'views/navbar.php';
 <div class="leftcontainer" style="float:left">
     <?php
     require 'views/pokemonlist.php';
-    ?>
+    ?> 
 </div>
 
 <div class="northeastcontainer" style="float:right">
