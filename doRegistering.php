@@ -32,7 +32,7 @@ if ($newuser->onkoKelvollinen() && is_null($isprevious)) {
   $_SESSION['ilmoitus'] = "User successfully created.";
 
 } else {
-  $virheet = $newuser->getVirheet();
+  $virhe = $newuser->getVirheet()[0];
   if (!is_null($isprevious)) {
       $virhe = 'Username is already in use.';
   }

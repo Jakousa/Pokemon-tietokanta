@@ -95,7 +95,7 @@ class Pokemon {
 
     public static function etsiPokemonNimesta($part) {
         require_once "libs/tietokantayhteys.php";
-        $sql = "SELECT id, name, type1, type2 FROM pokemon WHERE name LIKE ? ORDER BY id";
+        $sql = "SELECT id, name, type1, type2, hp, attack, defense, spattack, spdefense, speed FROM pokemon WHERE name LIKE ? ORDER BY id";
         $kysely = getTietokantayhteys()->prepare($sql);
         $kysely->execute(array('%' . $part . '%'));
 
@@ -106,6 +106,12 @@ class Pokemon {
             $pokemon->setName($tulos->name);
             $pokemon->setType1($tulos->type1);
             $pokemon->setType2($tulos->type2);
+            $pokemon->setHp($tulos->hp);
+            $pokemon->setAttack($tulos->attack);
+            $pokemon->setDefense($tulos->defense);
+            $pokemon->setSpattack($tulos->Spattack);
+            $pokemon->setSpdefense($tulos->Spdefense);
+            $pokemon->setSpeed($tulos->speed);
 
             $tulokset[] = $pokemon;
         }
@@ -114,7 +120,7 @@ class Pokemon {
 
     public static function etsiPokemonNimella($nimi) {
         require_once "libs/tietokantayhteys.php";
-        $sql = "SELECT id, name, type1, type2 FROM pokemon WHERE name = ? LIMIT 1";
+        $sql = "SELECT id, name, type1, type2, hp, attack, defense, spattack, spdefense, speed FROM pokemon WHERE name = ? LIMIT 1";
         $kysely = getTietokantayhteys()->prepare($sql);
         $kysely->execute(array($nimi));
 
@@ -127,6 +133,12 @@ class Pokemon {
             $pokemon->setName($tulos->name);
             $pokemon->setType1($tulos->type1);
             $pokemon->setType2($tulos->type2);
+            $pokemon->setHp($tulos->hp);
+            $pokemon->setAttack($tulos->attack);
+            $pokemon->setDefense($tulos->defense);
+            $pokemon->setSpattack($tulos->Spattack);
+            $pokemon->setSpdefense($tulos->Spdefense);
+            $pokemon->setSpeed($tulos->speed);
 
             return $pokemon;
         }
@@ -134,7 +146,7 @@ class Pokemon {
 
     public static function etsiKaikkiPokemonit() {
         require_once "libs/tietokantayhteys.php";
-        $sql = "SELECT id, name, type1, type2 FROM pokemon ORDER BY id";
+        $sql = "SELECT id, name, type1, type2, hp, attack, defense, spattack, spdefense, speed FROM pokemon ORDER BY id";
         $kysely = getTietokantayhteys()->prepare($sql);
         $kysely->execute();
 
@@ -145,6 +157,12 @@ class Pokemon {
             $pokemon->setName($tulos->name);
             $pokemon->setType1($tulos->type1);
             $pokemon->setType2($tulos->type2);
+            $pokemon->setHp($tulos->hp);
+            $pokemon->setAttack($tulos->attack);
+            $pokemon->setDefense($tulos->defense);
+            $pokemon->setSpattack($tulos->Spattack);
+            $pokemon->setSpdefense($tulos->Spdefense);
+            $pokemon->setSpeed($tulos->speed);
 
             $tulokset[] = $pokemon;
         }

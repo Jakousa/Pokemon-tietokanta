@@ -29,7 +29,7 @@
                         <td> <?php echo $pokemon->getName(); ?></td>
                         <td> <?php echo $pokemon->getType1(); ?></td>
                         <td> <?php echo $pokemon->getType2(); ?></td>
-                        <td><a href="index.php?added=<?php echo $pokemon->getName() ?>" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-ok"></span> Add to Team</a></td>
+                        <td><a href="editTempTeam.php?added=<?php echo $pokemon->getName() ?>" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-ok"></span> Add to Team</a></td>
                         <?php if (isLogged()) : ?>
                             <td><button type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-ok"></span> Catch</button></td>
                         <?php endif; ?>

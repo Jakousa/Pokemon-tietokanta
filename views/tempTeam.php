@@ -11,7 +11,7 @@
             <?php foreach ($_SESSION["tiimi"] as $member) : ?>
                 <tr>
                     <td> <?php echo $member; ?></td>
-                    <td><a href="index.php?removed=<?php echo array_search($member, $_SESSION["tiimi"]) ?>" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-remove-circle"></span> </a></td>
+                    <td><a href="editTempTeam.php?removed=<?php echo array_search($member, $_SESSION["tiimi"]) ?>" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-remove-circle"></span> </a></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
