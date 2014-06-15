@@ -1,7 +1,7 @@
 <?php
 require 'views/navbar.php';
 ?>
-Sijoittelu väliaikainen, sinä tarkastaja/katselmoija.
+Sijoittelu väliaikainen
 <div id="team_page_holder">
 
     <div id="team_containers">
