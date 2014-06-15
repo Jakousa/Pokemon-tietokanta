@@ -50,9 +50,9 @@ class Teammember {
 
     public function etsiTiimi($team) {
         require_once "libs/tietokantayhteys.php";
-        $sql = "SELECT * FROM teammember WHERE teamid = ?";
+        $sql = "SELECT * FROM pokemon INNER JOIN teammember ON pokemon.id=teammember.pokemonid WHERE teammember.teamid = ?";
         $kysely = getTietokantayhteys()->prepare($sql);
-        $kysely->execute(array($team->getId()));
+        $kysely->execute(array($team));
 
         $tulokset = array();
         foreach ($kysely->fetchAll(PDO::FETCH_OBJ) as $tulos) {

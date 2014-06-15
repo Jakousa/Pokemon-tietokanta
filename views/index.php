@@ -12,6 +12,7 @@ require 'views/navbar.php';
     <?php
     require 'views/tempTeam.php';
 
+    //Tarkistetaan onko henkilö kirjautunut toimintoja varten.
     if (isLogged()) :
         ?>
         <form class="form-horizontal" role="form" action="createTeam.php" method="POST">
@@ -25,7 +26,7 @@ require 'views/navbar.php';
             </div>
         </form>
         <?php if (sizeof($data->tiimit) > 0) : ?>
-
+            <!-- Yhdistettiin tiimin muokkaus ja poisto -->
             To delete a team update it with no pokemon.
             <form class="form-horizontal" role="form" action="updateTeam.php" method="POST">
                 <select name="teamid">
@@ -40,5 +41,5 @@ require 'views/navbar.php';
 </div>
 
 <div class="southeastcontainer" style="float:right">
-    <a>southeast</a>
+    <a>Will become info space</a>
 </div>

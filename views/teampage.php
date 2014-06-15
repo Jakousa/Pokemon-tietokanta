@@ -1,30 +1,50 @@
 <?php
 require 'views/navbar.php';
 ?>
-Sijoittelu väliaikainen, sinä tarkastaja/katselmoija
+Sijoittelu väliaikainen, sinä tarkastaja/katselmoija.
 <div id="team_page_holder">
+
     <div id="team_containers">
-        <select>
-            <?php foreach ($data->teams as $team) : ?>
-                <option value="<?php echo $team->getId() ?>"><?php echo $team->getName() ?></option>
-            <?php endforeach; ?>
-        </select>
-        <a href="" class="btn btn-default btn-xs">select</a>
-        Oma tiimi
+        <form method="GET">
+            <select name="team">
+                <?php foreach ($data->teams as $team) : ?>
+                    <option value="<?php echo $team->getId() ?>"><?php echo $team->getName() ?></option>
+                <?php endforeach; ?>
+            </select>
+            <button class="btn btn-default btn-xs" type="submit">select</button>
+        </form>
+        <table id="tiimi" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Type1</th>
+                        <th>Type2</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($data->omatiimi as $ottelija) : ?>
+                        <tr>
+                            <td> <?php echo $ottelija->getName(); ?></td>
+                            <td> <?php echo $ottelija->getType1(); ?></td>
+                            <td> <?php echo $ottelija->getType2(); ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
     </div>
 
     <div id="team_containers">
-        Ottelija
+        a<!-- Ottelija -->
     </div>
 
     <div id="team_containers">
-        Vastus
+        a<!-- Vastus -->
     </div>
 
     <div id="team_containers" class ="list-group"> 
         <!-- Lista vihollisen pokemoneista-->
-        <?php if(!isset($_SESSION['tiimi']) or empty($_SESSION['tiimi'])) : ?>
-        No enemy selected, do it in the <a href="index.php">front page.</a>
+        <?php if (!isset($_SESSION['tiimi']) or empty($_SESSION['tiimi'])) : ?>
+            No enemy selected, do it in the <a href="index.php">front page.</a>
         <?php else : ?>
             <table id="tiimi" class="table table-striped">
                 <thead>
@@ -60,19 +80,19 @@ Sijoittelu väliaikainen, sinä tarkastaja/katselmoija
     </div>
 
     <div id="team_containers">
-        Info oma
+        <!-- Info oma -->
     </div>
 
     <div id="team_containers">
-        Info ottelija
+        <!-- Info ottelija -->
     </div>
 
     <div id="team_containers">
-        Info vastus
+        <!-- Info vastus -->
     </div>
 
     <div id="team_containers">
-        Info vastustajat
+        <!-- Info vastustajat -->
     </div>
 
 </div>
