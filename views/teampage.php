@@ -1,7 +1,7 @@
 <?php
 require 'views/navbar.php';
 ?>
-Sijoittelu väliaikainen
+Sijoittelu väliaikainen 
 <div id="team_page_holder">
 
     <div id="team_containers">
@@ -14,23 +14,23 @@ Sijoittelu väliaikainen
             <button class="btn btn-default btn-xs" type="submit">select</button>
         </form>
         <table id="tiimi" class="table table-striped">
-                <thead>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Type1</th>
+                    <th>Type2</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($data->omatiimi as $ottelija) : ?>
                     <tr>
-                        <th>Name</th>
-                        <th>Type1</th>
-                        <th>Type2</th>
+                        <td> <?php echo $ottelija->getName(); ?></td>
+                        <td> <?php echo $ottelija->getType1(); ?></td>
+                        <td> <?php echo $ottelija->getType2(); ?></td>
                     </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($data->omatiimi as $ottelija) : ?>
-                        <tr>
-                            <td> <?php echo $ottelija->getName(); ?></td>
-                            <td> <?php echo $ottelija->getType1(); ?></td>
-                            <td> <?php echo $ottelija->getType2(); ?></td>
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
     </div>
 
     <div id="team_containers">
@@ -52,12 +52,7 @@ Sijoittelu väliaikainen
                         <th>Name</th>
                         <th>Type1</th>
                         <th>Type2</th>
-                        <th>Hp</th>
-                        <th>Attack</th>
-                        <th>Defense</th>
-                        <th>Sp.Attack</th>
-                        <th>Sp.Defense</th>
-                        <th>Speed</th>
+                        <th>Choose</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -66,12 +61,7 @@ Sijoittelu väliaikainen
                             <td> <?php echo $opponent->getName(); ?></td>
                             <td> <?php echo $opponent->getType1(); ?></td>
                             <td> <?php echo $opponent->getType2(); ?></td>
-                            <td> <?php echo $opponent->getHp(); ?></td>
-                            <td> <?php echo $opponent->getAttack(); ?></td>
-                            <td> <?php echo $opponent->getDefense(); ?></td>
-                            <td> <?php echo $opponent->getSpattack(); ?></td>
-                            <td> <?php echo $opponent->getSpdefense(); ?></td>
-                            <td> <?php echo $opponent->getSpeed(); ?></td>
+                            <td><button type="button" class="btn btn-xs btn-default">Choose</button></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>

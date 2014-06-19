@@ -1,5 +1,5 @@
-<h1>Pokémon-list</h1>
-<form role="form" action="index.php" method="GET">
+<h1>Caught Pokémon</h1>
+<form role="form" action="mypokemon.php" method="GET">
     <div class="input-group">
         <input type="text" name="part" class="form-control" placeholder="Search by name">
         <span class="input-group-btn">
@@ -15,27 +15,21 @@
                 <th>Name</th>
                 <th>Type1</th>
                 <th>Type2</th>
-                <th>To Team</th>
-                <?php if (isLogged()) : ?>
-                    <th>Catch</th>
-                <?php endif; ?>
+                <th>Shiny</th>
+                <th>Release</th>
                 <th>Info</th>
             </tr>
         </thead>
         <tbody>
-        <form action="doAddMyPokemon.php" method="POST">
+        <form action="doReleaseMyPokemon.php" method="POST">
             <?php foreach ($data->pokemonit as $pokemon): ?>
                 <tr>
                     <td> <?php echo $pokemon->getId(); ?></td>
                     <td> <?php echo $pokemon->getName(); ?></td>
                     <td> <?php echo $pokemon->getType1(); ?></td>
                     <td> <?php echo $pokemon->getType2(); ?></td>
-                    <td><a href="editTempTeam.php?added=<?php echo $pokemon->getName() ?>" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-ok"></span> Add to Team</a></td>
-                    <?php if (isLogged()) : ?>
-                        <td><button type="submit" name="caught" value="<?php echo $pokemon->getId() ?>" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-plus"></span> Normal</button>
-                            or
-                            <button type="submit" name="caughtShiny" value="<?php echo $pokemon->getId() ?>" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-star-empty"></span> Shiny</button></td>
-                    <?php endif; ?>
+                    <td> Is Shiny</td>
+                    <td><button type="submit" name="caught" value="<?php echo $pokemon->getId() ?>" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-remove"></span> Release</button></td>
                     <!-- <a href="doInfo"> --><td><button type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-info-sign"></span> </button></td>
                 </tr>
             <?php endforeach; ?>
