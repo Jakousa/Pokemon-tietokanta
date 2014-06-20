@@ -6,3 +6,9 @@ require 'views/navbar.php';
     require 'views/mypokemonlist.php';
     ?>
 </div>
+
+<div class="northeastcontainer" style="float:right">
+    <?php
+    require 'views/userinfo.php';
+    ?>
+</div>

@@ -21,7 +21,7 @@ if (!isLogged()) {
         $vastus[] = $pokemoni;
     }
     
-    //Jos oma tiimi on valittu haetaan se (muuten haetaan uusin tiimi?)
+    //Jos oma tiimi on valittu haetaan se
     $omatiimi = array();
     if (isset($_GET['team'])) {
         $omatiimi = Teammember::etsiTiimi($_GET['team']);

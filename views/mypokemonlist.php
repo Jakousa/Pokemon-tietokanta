@@ -15,7 +15,6 @@
                 <th>Name</th>
                 <th>Type1</th>
                 <th>Type2</th>
-                <th>Shiny</th>
                 <th>Release</th>
                 <th>Info</th>
             </tr>
@@ -28,8 +27,7 @@
                     <td> <?php echo $pokemon->getName(); ?></td>
                     <td> <?php echo $pokemon->getType1(); ?></td>
                     <td> <?php echo $pokemon->getType2(); ?></td>
-                    <td> Is Shiny</td>
-                    <td><button type="submit" name="caught" value="<?php echo $pokemon->getId() ?>" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-remove"></span> Release</button></td>
+                    <td><button type="submit" name="release" value="<?php echo $pokemon->getId() ?>" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-remove"></span> Release</button></td>
                     <!-- <a href="doInfo"> --><td><button type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-info-sign"></span> </button></td>
                 </tr>
             <?php endforeach; ?>
