@@ -21,7 +21,7 @@ $newuser->setSalasana($_POST['password']);
 
 $isprevious = Kayttaja::etsiKayttajaTunnuksella($newuser->getTunnus());
 
-//Pyydetään Kissa-oliota tarkastamaan syötetyt tiedot.
+////Pyydetään Kayttaja-oliota tarkastamaan syötetyt tiedot.
 if ($newuser->onkoKelvollinen() && is_null($isprevious)) {
     
   $newuser->lisaaKantaan();
@@ -32,12 +32,12 @@ if ($newuser->onkoKelvollinen() && is_null($isprevious)) {
   $_SESSION['ilmoitus'] = "User successfully created.";
 
 } else {
-  $virhe = $newuser->getVirheet()[0];
+  $virhe = $newuser->getVirheet();
   if (!is_null($isprevious)) {
       $virhe = 'Username is already in use.';
   }
   
-  //Virheet voidaan nyt välittää näkymälle syötettyjen tietojen kera
+//  Virheet voidaan nyt välittää näkymälle syötettyjen tietojen kera
   naytaNakyma("signup", array(
     'kayttaja' => $newuser->getTunnus(),
     'virhe' => $virhe

@@ -13,16 +13,23 @@ if (!isset($_GET['part']) or $_GET['part'] == '') {
     $pokemonit = Pokemon::etsiPokemonNimesta($part);
 }
 
-//Testataan jos ollaan kirjauduttu, sillä kirjautuneelle näytetään tiimit
+//Infon haku
+if (isset($_GET['info'])) {
+    $infopokemon = Pokemon::etsiPokemonIdlla($_GET['info']);
+}
+
+//Testataan jos ollaan kirjauduttu: kirjautuneelle näytetään tiimit
 if (isset($_SESSION['kirjautunut'])) {
     $teams = Team::etsiKaikkiTiimitOmistajalla($_SESSION['kirjautunut']);
 
     naytaNakyma("index", array(
         'pokemonit' => $pokemonit,
-        'tiimit' => $teams
+        'tiimit' => $teams,
+        'info' => $infopokemon
     ));
 } else {
     naytaNakyma("index", array(
-        'pokemonit' => $pokemonit
+        'pokemonit' => $pokemonit,
+        'info' => $infopokemon
     ));
 }

@@ -25,8 +25,6 @@ class Kayttaja {
         return $this->salasana;
     }
 
-    
-    
     public function setId($id) {
         $this->id = $id;
     }
@@ -47,7 +45,7 @@ class Kayttaja {
 
     public function setSalasana($salasana) {
         $this->salasana = $salasana;
-        
+
         if (trim($this->salasana) == '') {
             $this->virheet['salasana'] = "Password cannot be empty";
         } else if (strlen($this->salasana) > 20) {
@@ -60,6 +58,7 @@ class Kayttaja {
     }
 
     /* Etsitään kannasta käyttäjätunnuksella ja salasanalla käyttäjäriviä */
+
     public static function etsiKayttajaTunnuksilla($kayttaja, $salasana) {
         require_once "libs/tietokantayhteys.php";
         $sql = "SELECT id, username, password from users where username = ? AND password = ? LIMIT 1";
@@ -78,8 +77,9 @@ class Kayttaja {
             return $kayttaja;
         }
     }
-    
+
     /* Etsitään kannasta pelkällä käyttäjätunnuksella käyttäjäriviä */
+
     public static function etsiKayttajaTunnuksella($kayttaja) {
         require_once "libs/tietokantayhteys.php";
         $sql = "SELECT id, username from users where username = ? LIMIT 1";
@@ -115,6 +115,13 @@ class Kayttaja {
             $tulokset[] = $kayttaja;
         }
         return $tulokset;
+    }
+
+    public function poistaOlemasta($id) {
+        require_once "libs/tietokantayhteys.php";
+        $sql = "DELETE FROM users WHERE id = ?";
+        $kysely = getTietokantayhteys()->prepare($sql);
+        $kysely->execute(array($id));
     }
 
     public function lisaaKantaan() {

@@ -144,6 +144,32 @@ class Pokemon {
         }
     }
 
+    public static function etsiPokemonIdlla($id) {
+        require_once "libs/tietokantayhteys.php";
+        $sql = "SELECT id, name, type1, type2, hp, attack, defense, spattack, spdefense, speed FROM pokemon WHERE id = ? LIMIT 1";
+        $kysely = getTietokantayhteys()->prepare($sql);
+        $kysely->execute(array($id));
+
+        $tulos = $kysely->fetchObject();
+        if ($tulos == null) {
+            return null;
+        } else {
+            $pokemon = new Pokemon();
+            $pokemon->setId($tulos->id);
+            $pokemon->setName($tulos->name);
+            $pokemon->setType1($tulos->type1);
+            $pokemon->setType2($tulos->type2);
+            $pokemon->setHp($tulos->hp);
+            $pokemon->setAttack($tulos->attack);
+            $pokemon->setDefense($tulos->defense);
+            $pokemon->setSpattack($tulos->Spattack);
+            $pokemon->setSpdefense($tulos->Spdefense);
+            $pokemon->setSpeed($tulos->speed);
+
+            return $pokemon;
+        }
+    }
+
     public static function etsiKaikkiPokemonit() {
         require_once "libs/tietokantayhteys.php";
         $sql = "SELECT * FROM pokemon ORDER BY id";

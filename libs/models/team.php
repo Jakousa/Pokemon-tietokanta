@@ -49,7 +49,6 @@ class Team {
 
     public function etsiKaikkiTiimitOmistajalla($ownerid) {
         require_once "libs/tietokantayhteys.php";
-
         $sql = "SELECT id, name FROM team WHERE ownerid = ? ORDER BY id";
         $kysely = getTietokantayhteys()->prepare($sql);
         $kysely->execute(array($ownerid));

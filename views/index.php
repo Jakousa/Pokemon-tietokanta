@@ -11,10 +11,8 @@ require 'views/navbar.php';
     <h3>Team</h3>
     <?php
     require 'views/tempTeam.php';
-
     //Tarkistetaan onko henkilö kirjautunut toimintoja varten.
-    if (isLogged()) :
-        ?>
+    if (isLogged()) : ?>
         <form class="form-horizontal" role="form" action="createTeam.php" method="POST">
             <div class="input-group">
                 <input type="text" name="team" class="form-control" placeholder="Name of team">
