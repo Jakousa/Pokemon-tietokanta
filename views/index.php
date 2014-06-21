@@ -12,7 +12,8 @@ require 'views/navbar.php';
     <?php
     require 'views/tempTeam.php';
     //Tarkistetaan onko henkilö kirjautunut toimintoja varten.
-    if (isLogged()) : ?>
+    if (isLogged()) :
+        ?>
         <form class="form-horizontal" role="form" action="createTeam.php" method="POST">
             <div class="input-group">
                 <input type="text" name="team" class="form-control" placeholder="Name of team">
@@ -23,21 +24,24 @@ require 'views/navbar.php';
                 </span>
             </div>
         </form>
-        <?php if (sizeof($data->tiimit) > 0) : ?>
+    <?php if (sizeof($data->tiimit) > 0) : ?>
             <!-- Yhdistettiin tiimin muokkaus ja poisto -->
             To delete a team update it with no pokemon.
             <form class="form-horizontal" role="form" action="updateTeam.php" method="POST">
                 <select name="teamid">
                     <?php foreach ($data->tiimit as $team) : ?>
                         <option value="<?php echo $team->getId() ?>"><?php echo $team->getName() ?></option>
-                    <?php endforeach; ?>
+        <?php endforeach; ?>
                 </select> 
                 <button class="btn btn-default btn-xs" type="submit">Update!</button>
             </form>
         <?php endif; ?>
-    <?php endif; ?>
+<?php endif; ?>
 </div>
 
 <div class="southeastcontainer" style="float:right">
-    <a>Will become info space</a>
+    <a>Will become info</a>
+    <?php
+    require 'views/pokemoninfo.php';
+    ?> 
 </div>
