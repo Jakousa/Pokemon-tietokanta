@@ -14,9 +14,10 @@ if (!isset($_GET['part']) or $_GET['part'] == '') {
 }
 
 //Infon haku
-if (isset($_GET['info'])) {
-    $infopokemon = Pokemon::etsiPokemonIdlla($_GET['info']);
+if (!isset($_GET['info'])) {
+    $_GET['info'] = rand(1, sizeof($pokemonit));
 }
+$infopokemon = Pokemon::etsiPokemonIdlla($_GET['info']);
 
 //Testataan jos ollaan kirjauduttu: kirjautuneelle näytetään tiimit
 if (isset($_SESSION['kirjautunut'])) {

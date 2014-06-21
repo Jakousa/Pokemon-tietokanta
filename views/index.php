@@ -40,7 +40,6 @@ require 'views/navbar.php';
 </div>
 
 <div class="southeastcontainer" style="float:right">
-    <a>Will become info</a>
     <?php
     require 'views/pokemoninfo.php';
     ?> 

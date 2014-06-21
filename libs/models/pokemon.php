@@ -109,8 +109,8 @@ class Pokemon {
             $pokemon->setHp($tulos->hp);
             $pokemon->setAttack($tulos->attack);
             $pokemon->setDefense($tulos->defense);
-            $pokemon->setSpattack($tulos->Spattack);
-            $pokemon->setSpdefense($tulos->Spdefense);
+            $pokemon->setSpattack($tulos->spattack);
+            $pokemon->setSpdefense($tulos->spdefense);
             $pokemon->setSpeed($tulos->speed);
 
             $tulokset[] = $pokemon;
@@ -136,8 +136,8 @@ class Pokemon {
             $pokemon->setHp($tulos->hp);
             $pokemon->setAttack($tulos->attack);
             $pokemon->setDefense($tulos->defense);
-            $pokemon->setSpattack($tulos->Spattack);
-            $pokemon->setSpdefense($tulos->Spdefense);
+            $pokemon->setSpattack($tulos->spattack);
+            $pokemon->setSpdefense($tulos->spdefense);
             $pokemon->setSpeed($tulos->speed);
 
             return $pokemon;
@@ -162,8 +162,8 @@ class Pokemon {
             $pokemon->setHp($tulos->hp);
             $pokemon->setAttack($tulos->attack);
             $pokemon->setDefense($tulos->defense);
-            $pokemon->setSpattack($tulos->Spattack);
-            $pokemon->setSpdefense($tulos->Spdefense);
+            $pokemon->setSpattack($tulos->spattack);
+            $pokemon->setSpdefense($tulos->spdefense);
             $pokemon->setSpeed($tulos->speed);
 
             return $pokemon;
@@ -186,8 +186,8 @@ class Pokemon {
             $pokemon->setHp($tulos->hp);
             $pokemon->setAttack($tulos->attack);
             $pokemon->setDefense($tulos->defense);
-            $pokemon->setSpattack($tulos->Spattack);
-            $pokemon->setSpdefense($tulos->Spdefense);
+            $pokemon->setSpattack($tulos->spattack);
+            $pokemon->setSpdefense($tulos->spdefense);
             $pokemon->setSpeed($tulos->speed);
 
             $tulokset[] = $pokemon;
