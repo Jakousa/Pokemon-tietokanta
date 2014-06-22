@@ -32,17 +32,17 @@
                     <td> <?php echo $pokemon->getType2(); ?></td>
                     <td><a href="editTempTeam.php?added=<?php echo $pokemon->getName() ?>" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-ok"></span> Add to Team</a></td>
                     <?php if (isLogged()) : ?>
-                        <form action="doAddMyPokemon.php" method="POST">
-                            <td><button type="submit" name="caught" value="<?php echo $pokemon->getId() ?>" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-plus"></span> Normal</button>
-                            or
-                            <button type="submit" name="caughtShiny" value="<?php echo $pokemon->getId() ?>" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-star-empty"></span> Shiny</button></td>
-                        </form>
-                    <?php endif; ?>
-                <form role="form" action="index.php" method="GET">
-                    <input type="hidden" name="part" value="<?php echo $_GET['part']; ?>" />
-                    <td><button type="submit" name="info" value="<?php echo $pokemon->getId(); ?>" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-info-sign"></span></button></td>
-                </tr>
+                <form action="doAddMyPokemon.php" method="POST">
+                    <td><button type="submit" name="caught" value="<?php echo $pokemon->getId() ?>" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-plus"></span> Normal</button>
+                        or
+                        <button type="submit" name="caughtShiny" value="<?php echo $pokemon->getId() ?>" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-star-empty"></span> Shiny</button></td>
                 </form>
+            <?php endif; ?>
+            <form role="form" action="index.php" method="GET">
+                <input type="hidden" name="part" value="<?php echo $_GET['part']; ?>" />
+                <td><button type="submit" name="info" value="<?php echo $pokemon->getId(); ?>" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-info-sign"></span></button></td>
+            </form>
+            </tr>
         <?php endforeach; ?>
         </tbody>
     </table>

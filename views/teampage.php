@@ -1,7 +1,6 @@
 <?php
 require 'views/navbar.php';
 ?>
-Sijoittelu väliaikainen 
 <div id="team_page_holder">
 
     <div id="team_containers">
@@ -12,6 +11,8 @@ Sijoittelu väliaikainen
                 <?php endforeach; ?>
             </select>
             <button class="btn btn-default btn-xs" type="submit">select</button>
+            <input type="hidden" name="info" value="<?php echo $_GET['info']; ?>" />
+            <input type="hidden" name="info2" value="<?php echo $_GET['info2']; ?>" />
         </form>
         <table id="tiimi" class="table table-striped">
             <thead>
@@ -19,29 +20,42 @@ Sijoittelu väliaikainen
                     <th>Name</th>
                     <th>Type1</th>
                     <th>Type2</th>
+                    <th>Choose</th>
                 </tr>
             </thead>
             <tbody>
+            <form method="GET">
+                <input type="hidden" name="team" value="<?php echo $_GET['team']; ?>" />
                 <?php foreach ($data->omatiimi as $ottelija) : ?>
                     <tr>
                         <td> <?php echo $ottelija->getName(); ?></td>
                         <td> <?php echo $ottelija->getType1(); ?></td>
                         <td> <?php echo $ottelija->getType2(); ?></td>
+                        <td> <button type="submit" name="info" value="<?php echo $ottelija->getId(); ?>" class="btn btn-xs btn-default">Choose</button></td>
                     </tr>
                 <?php endforeach; ?>
+                <input type="hidden" name="info2" value="<?php echo $_GET['info2']; ?>" />
+            </form>
             </tbody>
         </table>
     </div>
 
     <div id="team_containers">
-        a<!-- Ottelija -->
+        Your fighter<!-- Ottelija -->
+        <?php
+        require 'views/pokemoninfo.php';
+        ?>
     </div>
 
     <div id="team_containers">
-        a<!-- Vastus -->
+        Your opponent<!-- Vastus -->
+        <?php
+        $data->info = $data->info2;
+        require 'views/pokemoninfo.php';
+        ?>
     </div>
 
-    <div id="team_containers" class ="list-group"> 
+    <div id="team_containers" class ="list-group" style="float:right"> 
         <!-- Lista vihollisen pokemoneista-->
         <?php if (!isset($_SESSION['tiimi']) or empty($_SESSION['tiimi'])) : ?>
             No enemy selected, do it in the <a href="index.php">front page.</a>
@@ -56,33 +70,22 @@ Sijoittelu väliaikainen
                     </tr>
                 </thead>
                 <tbody>
+                <form method="GET">
+                    <?php if (isset($_GET['team'])) : ?>
+                    <input type="hidden" name="team" value="<?php echo $_GET['team']; ?>" />
+                    <?php endif;?>
+                    <input type="hidden" name="info" value="<?php echo $_GET['info']; ?>" />
                     <?php foreach ($data->vastus as $opponent) : ?>
                         <tr>
                             <td> <?php echo $opponent->getName(); ?></td>
                             <td> <?php echo $opponent->getType1(); ?></td>
                             <td> <?php echo $opponent->getType2(); ?></td>
-                            <td><button type="button" class="btn btn-xs btn-default">Choose</button></td>
+                            <td><button type="submit" name="info2" value="<?php echo $opponent->getId(); ?>" class="btn btn-xs btn-default">Choose</button></td>
                         </tr>
                     <?php endforeach; ?>
+                </form>
                 </tbody>
             </table>
         <?php endif; ?>
     </div>
-
-    <div id="team_containers">
-        <!-- Info oma -->
-    </div>
-
-    <div id="team_containers">
-        <!-- Info ottelija -->
-    </div>
-
-    <div id="team_containers">
-        <!-- Info vastus -->
-    </div>
-
-    <div id="team_containers">
-        <!-- Info vastustajat -->
-    </div>
-
 </div>
